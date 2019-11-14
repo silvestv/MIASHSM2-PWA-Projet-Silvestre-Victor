@@ -12,7 +12,7 @@ import {TodoService} from '../service/todo.service';
 export class TodoListComponent implements OnInit {
 
   titre: string;
-
+  _ownFilter: string;
   @Input() private data: TodoListData;
 
   @ViewChild("newTodoInput", {static: false}) newTodoInput: ElementRef;
@@ -20,6 +20,7 @@ export class TodoListComponent implements OnInit {
   constructor(private todoService: TodoService) {
     todoService.getTodoListDataObserver().subscribe( tdl => this.data = tdl );
     this.titre = this.data.label;
+    this._ownFilter = 'Tous';
   }
 
   ngOnInit() {
@@ -30,7 +31,22 @@ export class TodoListComponent implements OnInit {
   }
 
   get items(): TodoItemData[] {
-    return this.data.items;
+    if(this.ownFilter === 'Tous'){
+      return this.data.items;
+    } else if(this.ownFilter === 'Actifs'){
+      return this.data.items.filter(I => I.isDone === false);
+    } else if(this.ownFilter === 'Completes'){
+      return this.data.items.filter(I => I.isDone === true);
+    }
+
+  }
+
+  get ownFilter(): string {
+    return this._ownFilter;
+  }
+
+  set ownFilter(ownFilter: string) {
+    this._ownFilter = ownFilter;
   }
 
   itemDone(item: TodoItemData, done: boolean) {

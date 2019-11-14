@@ -28,13 +28,13 @@
     <span class="todo-count"><strong></strong> restantes</span>
     <ul class="filters">
       <li>
-        <a class="filterAll">Tous</a>
+        <a class="filterAll" (click)="ownFilter = 'Tous'">Tous</a>
       </li>
       <li>
-        <a class="filterActives">Actifs</a>
+        <a class="filterActives" (click)="ownFilter ='Actifs'">Actifs</a>
       </li>
       <li>
-        <a class="filterCompleted">Complétés</a>
+        <a class="filterCompleted" (click)="ownFilter ='Completes'">Complétés</a>
       </li>
     </ul>
     <button class="clear-completed" (click)="removeAllItemChecked()">Supprimer cochées</button>
