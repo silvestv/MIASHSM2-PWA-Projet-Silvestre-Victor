@@ -41,6 +41,11 @@ export class TodoListComponent implements OnInit {
 
   }
 
+  get itemsRestant(): number{
+    return this.data.items.filter(I => I.isDone === false).length;
+  }
+
+
   get ownFilter(): string {
     return this._ownFilter;
   }
