@@ -22,6 +22,7 @@ export class TodoService {
     });
   }
 
+
   setItemsDone(isDone: boolean, ...items: TodoItemData[] ) {
     const tdl = this.todoListSubject.getValue();
     this.todoListSubject.next( {
@@ -43,6 +44,14 @@ export class TodoService {
     this.todoListSubject.next( {
       label: tdl.label, // ou on peut écrire: ...tdl,
       items: tdl.items.filter( I => items.indexOf(I) === -1 )
+    });
+  }
+
+  removeAllItemChecked() {
+    const tdl = this.todoListSubject.getValue();
+    this.todoListSubject.next( {
+      label: tdl.label, // ou on peut écrire: ...tdl,
+      items: tdl.items.filter( I => I.isDone === false )
     });
   }
 

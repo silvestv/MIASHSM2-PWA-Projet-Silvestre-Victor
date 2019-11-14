@@ -52,6 +52,11 @@ export class TodoListComponent implements OnInit {
     this.todoService.removeItems(item);
   }
 
+  removeAllItemChecked(){
+    this.todoService.removeAllItemChecked();
+  }
+
+
   isAllDone(): boolean {
     // return this.items.reduce( (acc, it) => acc && it.isDone, true);
     return this.items.every( it => it.isDone );
