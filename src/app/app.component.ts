@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {TodoService} from './todo.service';
+import {TodoService} from './service/todo.service';
 import {TodoListData} from './dataTypes/TodoListData';
 import {TodoItemData} from './dataTypes/TodoItemData';
 

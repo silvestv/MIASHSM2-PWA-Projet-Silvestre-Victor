@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {TodoListData} from './dataTypes/TodoListData';
+import {TodoListData} from '../dataTypes/TodoListData';
 import {Observable, BehaviorSubject} from 'rxjs';
-import {TodoItemData} from './dataTypes/TodoItemData';
+import {TodoItemData} from '../dataTypes/TodoItemData';
 
 @Injectable()
 export class TodoService {
