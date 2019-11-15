@@ -88,4 +88,12 @@ export class TodoListComponent implements OnInit {
     this.todoService.setItemsDone(done, ...this.items);
   }
 
+  needToAppear() : boolean {
+    return this.data.items.length === 0
+  }
+
+  needToAppearCaseCochees() : boolean {
+    return this.data.items.filter(I => I.isDone === true).length === 0;
+  }
+
 }

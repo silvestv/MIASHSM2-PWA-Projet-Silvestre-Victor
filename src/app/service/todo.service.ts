@@ -64,12 +64,18 @@ export class TodoService {
 
   }
 
+  //Explications :
+  //Les fonctions du service ont un but bien précis : modifier les datas qui seront manipulables par les vues
+  //par conséquent chacune des fonctions du service représente une modification de la donnée !
+  //nous effectuons un save() en localStorage à l'appel de chacune de ces fonctions !
   save() {
     const tdl = this.todoListSubject.getValue();
     console.log(tdl.label);
     localStorage.setItem(tdl.label, JSON.stringify(tdl.items));
   }
 
+  //le load() n'est qu'un init permettant lors d'une nouvelle session de recupérer ce qui est dans le local storage
+  //la méthode est appelé dans le subject pour en initialiser la valeur
   load() {
     return JSON.parse(localStorage.getItem('TodoList'));
   }

@@ -24,7 +24,7 @@
       </li>
     </ul>
   </section>
-  <footer class="footer">
+  <footer class="footer" *ngIf="!needToAppear()">
     <span class="todo-count"><strong></strong> {{itemsRestant}} tâches restantes</span>
     <ul class="filters">
       <li>
@@ -37,7 +37,7 @@
         <a class="filterCompleted" (click)="ownFilter ='Completes'">Complétés</a>
       </li>
     </ul>
-    <button class="clear-completed" (click)="removeAllItemChecked()">Supprimer cochées</button>
+    <button class="clear-completed" *ngIf="!needToAppearCaseCochees()" (click)="removeAllItemChecked()">Supprimer cochées</button>
   </footer>
 </section>
 <hr/>
