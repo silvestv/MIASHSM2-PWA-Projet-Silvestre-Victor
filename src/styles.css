@@ -398,3 +398,14 @@ html .clear-completed:active {
   border-radius: 5px;
   margin: 5px;
 }
+
+.btn-remove-all {
+  width: 120px;
+  height: 40px;
+  color: white;
+  font-weight: 900;
+  background-color: darkred;
+  border-radius: 5px;
+  margin: 5px;
+  float: right;
+}

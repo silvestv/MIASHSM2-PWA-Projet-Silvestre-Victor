@@ -70,6 +70,16 @@ export class TodoService {
 
   }
 
+  removeAllItems(){
+    const tdl = this.todoListSubject.getValue();
+    this.undo.push(JSON.stringify(tdl));
+    this.todoListSubject.next( {
+      label: tdl.label, // ou on peut écrire: ...tdl,
+      items: []
+    });
+    this.save();
+  }
+
    // Explications :
   // tslint:disable-next-line:comment-format
   // Les fonctions du service ont un but bien précis : modifier les datas qui seront manipulables par les vues

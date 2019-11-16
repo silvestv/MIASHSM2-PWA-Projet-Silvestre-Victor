@@ -77,6 +77,9 @@ export class TodoListComponent implements OnInit {
     this.todoService.removeAllItemChecked();
   }
 
+  onRemoveAll() {
+    this.todoService.removeAllItems();
+  }
 
   isAllDone(): boolean {
     // return this.items.reduce( (acc, it) => acc && it.isDone, true);
@@ -103,4 +106,6 @@ export class TodoListComponent implements OnInit {
   onRedo() {
     this.todoService.redoAction();
   }
+
+
 }
