@@ -70,6 +70,7 @@ export class TodoService {
 
   }
 
+  // Supprime tout les items cochés ou non (action reversible)
   removeAllItems(){
     const tdl = this.todoListSubject.getValue();
     this.undo.push(JSON.stringify(tdl));
