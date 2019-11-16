@@ -15,7 +15,7 @@ export class TodoListComponent implements OnInit {
   _ownFilter: string;
   @Input() private data: TodoListData;
 
-  @ViewChild("newTodoInput", {static: false}) newTodoInput: ElementRef;
+  @ViewChild('newTodoInput', {static: false}) newTodoInput: ElementRef;
 
   constructor(private todoService: TodoService) {
     todoService.getTodoListDataObserver().subscribe( tdl => this.data = tdl );
@@ -31,17 +31,17 @@ export class TodoListComponent implements OnInit {
   }
 
   get items(): TodoItemData[] {
-    if(this.ownFilter === 'Tous'){
+    if (this.ownFilter === 'Tous') {
       return this.data.items;
-    } else if(this.ownFilter === 'Actifs'){
+    } else if (this.ownFilter === 'Actifs') {
       return this.data.items.filter(I => I.isDone === false);
-    } else if(this.ownFilter === 'Completes'){
+    } else if (this.ownFilter === 'Completes') {
       return this.data.items.filter(I => I.isDone === true);
     }
 
   }
 
-  get itemsRestant(): number{
+  get itemsRestant(): number {
     return this.data.items.filter(I => I.isDone === false).length;
   }
 
@@ -73,7 +73,7 @@ export class TodoListComponent implements OnInit {
     this.todoService.removeItems(item);
   }
 
-  removeAllItemChecked(){
+  removeAllItemChecked() {
     this.todoService.removeAllItemChecked();
   }
 
@@ -88,12 +88,19 @@ export class TodoListComponent implements OnInit {
     this.todoService.setItemsDone(done, ...this.items);
   }
 
-  needToAppear() : boolean {
-    return this.data.items.length === 0
+  needToAppear(): boolean {
+    return this.data.items.length === 0;
   }
 
-  needToAppearCaseCochees() : boolean {
+  needToAppearCaseCochees(): boolean {
     return this.data.items.filter(I => I.isDone === true).length === 0;
   }
 
+  onUndo() {
+    this.todoService.undoAction();
+  }
+
+  onRedo() {
+    this.todoService.redoAction();
+  }
 }
