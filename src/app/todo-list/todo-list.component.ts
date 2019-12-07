@@ -1,7 +1,11 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit, ViewChild, ElementRef, HostListener} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit, ViewChild, ElementRef, HostListener, OnDestroy} from '@angular/core';
 import {TodoListData} from '../dataTypes/TodoListData';
 import {TodoItemData} from '../dataTypes/TodoItemData';
 import {TodoService} from '../service/todo.service';
+import {Observable, Subscription} from 'rxjs';
+import 'rxjs-compat/add/observable/interval';
+import {AuthentificationService} from '../service/authentification.service';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -9,21 +13,30 @@ import {TodoService} from '../service/todo.service';
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.scss']
 })
-export class TodoListComponent implements OnInit {
+export class TodoListComponent implements OnInit, OnDestroy {
 
   titre: string;
   _ownFilter: string;
   @Input() private data: TodoListData;
+  counterSubscription: Subscription;
+  secondes: number
 
   @ViewChild('newTodoInput', {static: false}) newTodoInput: ElementRef;
 
-  constructor(private todoService: TodoService) {
-    todoService.getTodoListDataObserver().subscribe( tdl => this.data = tdl );
+  constructor(private todoService: TodoService, private authService: AuthentificationService, private route: Router) {
+    todoService.getTodoListDataObserver().subscribe(tdl => this.data = tdl);
     this.titre = this.data.label;
     this._ownFilter = 'Tous';
   }
 
   ngOnInit() {
+    const counter = Observable.interval(1000);
+    this.counterSubscription = counter.subscribe(
+      (value: number) => {
+        this.secondes = value;
+        console.log(this.secondes);
+      },
+    )
   }
 
   get label(): string {
@@ -55,22 +68,27 @@ export class TodoListComponent implements OnInit {
   }
 
   itemDone(item: TodoItemData, done: boolean) {
-    this.todoService.setItemsDone( done, item );
+    this.todoService.setItemsDone(done, item);
   }
 
   itemLabel(item: TodoItemData, label: string) {
-    this.todoService.setItemsLabel( label, item );
+    this.todoService.setItemsLabel(label, item);
   }
 
   appendItem(label: string) {
-    this.todoService.appendItems( {
+    this.todoService.appendItems({
       label,
       isDone: false
-    } );
+    });
   }
 
   removeItem(item: TodoItemData) {
     this.todoService.removeItems(item);
+  }
+
+  deconnexion(): void{
+    this.authService.signOut();
+    this.route.navigate(['/auth']);
   }
 
   removeAllItemChecked() {
@@ -83,7 +101,7 @@ export class TodoListComponent implements OnInit {
 
   isAllDone(): boolean {
     // return this.items.reduce( (acc, it) => acc && it.isDone, true);
-    return this.items.every( it => it.isDone );
+    return this.items.every(it => it.isDone);
   }
 
   toggleAllDone() {
@@ -107,5 +125,8 @@ export class TodoListComponent implements OnInit {
     this.todoService.redoAction();
   }
 
-
+  ngOnDestroy(): void {
+    this.counterSubscription.unsubscribe();
+  }
 }
+

@@ -1,1 +1,9 @@
-<p>authentification works!</p>
+<br>
+<h2 class="h2 text-center">Authentification</h2>
+<hr>
+<br>
+<h3 class="h3 text-center">Veuillez-vous authentifier pour accèder à votre Todo</h3>
+<button class="btn btn-success" *ngIf="!authStatus" (click)="onSignIn() ">Se Connecter</button>
+<button class="btn btn-danger" *ngIf="authStatus" (click)="onSignOut()">Se Déconnecter</button>
+<br><br>
+<a routerLink="/new-user">Pas encore de compte ? Créez un compte</a>

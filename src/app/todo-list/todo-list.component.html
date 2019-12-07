@@ -1,3 +1,6 @@
+<div class="row">
+  <label class="text-center"><p>Vous êtes connecté depuis {{ secondes}} secondes </p></label>
+</div>
 <section class="todoapp">
   <header class="header container-fluid">
     <div class="row">
@@ -50,14 +53,12 @@
   <button class="btn btn-dark btn-lg btn-group" (click)="onUndo()"><i class="fas fa-undo"></i></button>
   <button class="btn btn-secondary btn-lg btn-group" (click)="onRedo()"><i class="fas fa-redo"></i></button>
   <button class="btn btn-danger btn-lg btn-group" (click)="onRemoveAll()"><i class="fas fa-trash-alt"></i></button>
+  <br>
+  <button class="btn btn-danger btn-lg btn-group" (click)="deconnexion()">Déconnexion</button>
 </div>
 
 <div class="row">
-  <a routerLink="/users">La liste des utilisateur</a>
-</div>
-
-<div class="row">
-  <a routerLink="/new-user">Créer un compte</a>
+  <a routerLink="/users" >La liste des utilisateur</a>
 </div>
 
 

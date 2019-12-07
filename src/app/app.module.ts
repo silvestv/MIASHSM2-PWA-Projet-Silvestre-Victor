@@ -13,6 +13,8 @@ import { NewUserComponent } from './new-user/new-user.component';
 import { AppRoutingModule } from './app-routing.module';
 import {UserService} from './service/user.service';
 import { ListUsersComponent } from './list-users/list-users.component';
+import {AuthentificationService} from './service/authentification.service';
+import {AuthentificationGuard} from './service/authentificationGuard.service';
 
 
 @NgModule({
@@ -31,7 +33,12 @@ import { ListUsersComponent } from './list-users/list-users.component';
     AppRoutingModule,
     ReactiveFormsModule,
   ],
-  providers: [TodoService, UserService],
+  providers: [
+    TodoService,
+    UserService,
+    AuthentificationService,
+    AuthentificationGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
