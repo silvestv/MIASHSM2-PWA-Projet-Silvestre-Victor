@@ -96,7 +96,13 @@ export class TodoService {
   // le load() n'est qu'un init permettant lors d'une nouvelle session de recupérer ce qui est dans le local storage
   // la méthode est appelé dans le subject pour en initialiser la valeur
   load() {
-    return JSON.parse(localStorage.getItem('TodoList'));
+    if(localStorage.getItem('TodoList') === null){
+      return [];
+    } else {
+      return JSON.parse(localStorage.getItem('TodoList'));
+    }
+
+
   }
 
   undoAction() {

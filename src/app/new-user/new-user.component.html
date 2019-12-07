@@ -1,0 +1,43 @@
+<div class="col-sn-8 col-sn-offset-2">
+  <form [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
+    <div class="form-group">
+      <label for="firstName">Prénom</label>
+      <input type="text" class="form-control" id="firstName" placeholder="Votre Prénom" formControlName="firstName" [ngClass]="{ 'is-invalid': getControls().firstName.errors }">
+      <div *ngIf="getControls().firstName.errors" class="invalid-feedback">
+        <div *ngIf="getControls().firstName.errors.required">First Name is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="lastName">Nom</label>
+      <input type="text" class="form-control" id="lastName" placeholder="Votre Nom" formControlName="lastName"  [ngClass]="{ 'is-invalid': getControls().lastName.errors }">
+        <div *ngIf="getControls().lastName.errors" class="invalid-feedback">
+          <div *ngIf="getControls().lastName.errors.required">Last Name is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Adresse Email</label>
+      <input type="text" class="form-control" id="email" placeholder="Votre Email" formControlName="email"  [ngClass]="{ 'is-invalid': getControls().email.errors }">
+      <div *ngIf="getControls().email.errors" class="invalid-feedback">
+        <div *ngIf="getControls().email.errors.required">Email is required</div>
+        <div *ngIf="getControls().email.errors.email">Email must be a valid email address</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password">PassWord</label>
+      <input type="text" class="form-control" id="password" formControlName="password"  placeholder="Votre password (6 caractère min)" [ngClass]="{ 'is-invalid': getControls().password.errors }">
+      <div *ngIf="getControls().password.errors" class="invalid-feedback">
+        <div *ngIf="getControls().password.errors.required">Password is required</div>
+        <div *ngIf="getControls().password.errors.minlength">Password must be at least 6 characters</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="confirmPassword">PassWord</label>
+      <input type="text" class="form-control" id="confirmPassword" formControlName="confirmPassword"  placeholder="confirmer votre mot de passe" [ngClass]="{ 'is-invalid': getControls().confirmPassword.errors }">
+      <div *ngIf="getControls().confirmPassword.errors" class="invalid-feedback">
+        <div *ngIf="getControls().confirmPassword.errors.required">Confirm Password is required</div>
+        <div *ngIf="getControls().confirmPassword.errors.mustMatch">Passwords must match</div>
+      </div>
+    </div>
+    <button class="btn btn-primary" type="submit" [disabled]="this.userForm.invalid">Soumettre</button>
+  </form>
+</div>

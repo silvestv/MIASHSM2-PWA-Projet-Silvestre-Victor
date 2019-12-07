@@ -1,13 +1,17 @@
 <section class="todoapp">
-  <header class="header">
-    <h1>{{label}}</h1>
-    <form (submit)="appendItem(newTodoInput.value); newTodoInput.value = ''">
-      <input  #newTodoInput
-              name        = "newTodoInput"
-              class       = "new-todo"
-              placeholder = "Que faire?"
-              autofocus />
-    </form>
+  <header class="header container-fluid">
+    <div class="row">
+      <div class="col-sm">
+        <h1>{{label}}</h1>
+        <form (submit)="appendItem(newTodoInput.value); newTodoInput.value = ''">
+          <input  #newTodoInput
+                  name        = "newTodoInput"
+                  class       = "new-todo"
+                  placeholder = "Que faire?"
+                  autofocus />
+        </form>
+      </div>
+    </div>
   </header>
   <section class="main">
     <input  class="toggle-all"
@@ -24,7 +28,7 @@
       </li>
     </ul>
   </section>
-  <footer class="footer" *ngIf="!needToAppear()">
+  <footer class="footer container-fluid" *ngIf="!needToAppear()">
     <span class="todo-count"><strong></strong> {{itemsRestant}} tâches restantes</span>
     <ul class="filters">
       <li>
@@ -43,13 +47,21 @@
 <hr/>
 
 <div class="container-fluid">
-  <button class="btn btn-dark btn-lg" (click)="onUndo()"><i class="fas fa-undo"></i></button>
-  <button class="btn btn-secondary btn-lg" (click)="onRedo()"><i class="fas fa-redo"></i></button>
-  <button class="btn btn-danger btn-lg" (click)="onRemoveAll()"><i class="fas fa-trash-alt"></i></button>
+  <button class="btn btn-dark btn-lg btn-group" (click)="onUndo()"><i class="fas fa-undo"></i></button>
+  <button class="btn btn-secondary btn-lg btn-group" (click)="onRedo()"><i class="fas fa-redo"></i></button>
+  <button class="btn btn-danger btn-lg btn-group" (click)="onRemoveAll()"><i class="fas fa-trash-alt"></i></button>
+</div>
+
+<div class="row">
+  <a routerLink="/users">La liste des utilisateur</a>
+</div>
+
+<div class="row">
+  <a routerLink="/new-user">Créer un compte</a>
 </div>
 
 
-<!-- Version debug de la liste V1 -->
+<!-- Version debug de la liste V1
 <h2>Debug V1</h2>
 <ul>
   <li *ngFor="let item of items">
@@ -57,7 +69,7 @@
   </li>
 </ul>
 
-<!-- Version debug de la liste V2, si on clique sur la checkbox, le json n'est pas modifié... -->
+ Version debug de la liste V2, si on clique sur la checkbox, le json n'est pas modifié...
 <h2>Debug V2</h2>
 <ul>
   <li *ngFor="let item of items">
@@ -67,7 +79,7 @@
   </li>
 </ul>
 
-<!-- Version debug de la liste V3, json OK -->
+<!-- Version debug de la liste V3, json OK
 <h2>Debug V3</h2>
 <ul>
   <li *ngFor="let item of items">
@@ -76,8 +88,7 @@
     <pre>{{item | json}}</pre>
   </li>
 </ul>
-
-<!-- Version debug de la liste V4, edition du texte -->
+ Version debug de la liste V4, edition du texte
 <h2>Debug V4</h2>
 <ul>
   <li *ngFor="let item of items">
@@ -89,7 +100,7 @@
   </li>
 </ul>
 
-<!-- Version debug de la liste V5, suppression de l'item -->
+Version debug de la liste V5, suppression de l'item
 <h2>Debug V5</h2>
 <ul>
   <li *ngFor="let item of items">
@@ -100,4 +111,4 @@
     <button (click)="removeItem(item)">DELETE</button>
     <pre>{{item | json}}</pre>
   </li>
-</ul>
+</ul>-->

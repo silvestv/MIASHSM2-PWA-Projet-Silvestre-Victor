@@ -3,6 +3,7 @@
 @import "~font-awesome/css/font-awesome.css";
 
 
+
 html,
 body {
   margin: 0;
@@ -255,6 +256,9 @@ label[for='toggle-all'] {
   color: #777;
   padding: 10px 15px;
   height: 40px;
+  @media (max-width: 580px){
+    height: 60px;
+  }
   text-align: center;
   border-top: 1px solid #e6e6e6;
 }
@@ -384,6 +388,10 @@ html .clear-completed:active {
 }
 
 
-.container-fluid .btn {
-  margin: 10px;
+.container-fluid {
+  width: auto;
+  text-align: center;
+  .btn {
+    margin: 10px;
+  }
 }
