@@ -15,7 +15,6 @@ export class AuthentificationService{
   }
 
   signOut() {
-    console.log("deco");
     this.isAuth = false;
     console.log(this.isAuth);
   }

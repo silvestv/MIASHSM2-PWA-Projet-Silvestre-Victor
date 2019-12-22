@@ -15,6 +15,7 @@ import {UserService} from './service/user.service';
 import { ListUsersComponent } from './list-users/list-users.component';
 import {AuthentificationService} from './service/authentification.service';
 import {AuthentificationGuard} from './service/authentificationGuard.service';
+import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import {AuthentificationGuard} from './service/authentificationGuard.service';
     AngularFontAwesomeModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    ShowHidePasswordModule
   ],
   providers: [
     TodoService,

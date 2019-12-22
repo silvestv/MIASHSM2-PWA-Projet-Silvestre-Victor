@@ -24,15 +24,19 @@
     </div>
     <div class="form-group">
       <label for="password">PassWord</label>
-      <input type="text" class="form-control" id="password" formControlName="password"  placeholder="Votre password (6 caractère min)" [ngClass]="{ 'is-invalid': getControls().password.errors }">
+      <show-hide-password>
+        <input type="password" class="form-control" id="password" formControlName="password"  placeholder="Votre password (6 caractère min)" [ngClass]="{ 'is-invalid': getControls().password.errors }">
+      </show-hide-password>
       <div *ngIf="getControls().password.errors" class="invalid-feedback">
         <div *ngIf="getControls().password.errors.required">Password is required</div>
         <div *ngIf="getControls().password.errors.minlength">Password must be at least 6 characters</div>
       </div>
     </div>
     <div class="form-group">
-      <label for="confirmPassword">PassWord</label>
-      <input type="text" class="form-control" id="confirmPassword" formControlName="confirmPassword"  placeholder="confirmer votre mot de passe" [ngClass]="{ 'is-invalid': getControls().confirmPassword.errors }">
+      <label for="confirmPassword">Confirm your password</label>
+      <show-hide-password>
+        <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword"  placeholder="Confirmez votre password (6 caractère min)" [ngClass]="{ 'is-invalid': getControls().confirmPassword.errors }">
+      </show-hide-password>
       <div *ngIf="getControls().confirmPassword.errors" class="invalid-feedback">
         <div *ngIf="getControls().confirmPassword.errors.required">Confirm Password is required</div>
         <div *ngIf="getControls().confirmPassword.errors.mustMatch">Passwords must match</div>

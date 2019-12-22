@@ -8,9 +8,9 @@ import {AuthentificationComponent} from './authentification/authentification.com
 import {AuthentificationGuard} from './service/authentificationGuard.service';
 
 
-let routes: Routes;
-routes = [
-  {path: '', redirectTo: 'todo', pathMatch: 'full'},
+
+export const routes = [
+  {path: '',  pathMatch: 'full',redirectTo: 'todo'},
   {path: 'todo',canActivate: [AuthentificationGuard], component: TodoListComponent},
   {path: 'todo/:id',canActivate: [AuthentificationGuard], component: TodoListComponent},
   {path: 'users',canActivate: [AuthentificationGuard], component: ListUsersComponent},

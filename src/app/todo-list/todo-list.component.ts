@@ -19,24 +19,31 @@ export class TodoListComponent implements OnInit, OnDestroy {
   _ownFilter: string;
   @Input() private data: TodoListData;
   counterSubscription: Subscription;
-  secondes: number
+  secondes: number;
 
   @ViewChild('newTodoInput', {static: false}) newTodoInput: ElementRef;
 
+  //souscricription au service pour mettre à jour les données présentées dans la vue à chaque changement de données
   constructor(private todoService: TodoService, private authService: AuthentificationService, private route: Router) {
     todoService.getTodoListDataObserver().subscribe(tdl => this.data = tdl);
     this.titre = this.data.label;
     this._ownFilter = 'Tous';
   }
 
+  //counter, depuis combien de temps êtes vous sur la page
   ngOnInit() {
     const counter = Observable.interval(1000);
     this.counterSubscription = counter.subscribe(
       (value: number) => {
         this.secondes = value;
-        console.log(this.secondes);
       },
-    )
+      (error: any) => {
+        console.log('une erreur à été rencontrée ! ');
+      },
+      () => {
+        console.log('Observable complétée');
+      }
+    );
   }
 
   get label(): string {

@@ -14,9 +14,10 @@ export class AuthentificationGuard implements CanActivate {
   ): Observable<boolean> | Promise<boolean> | boolean {
 
     if(this.authService.isAuth){
+      console.log("VOUS ETES CONNECTE");
       return true;
     } else {
-      console.log("allezla")
+      console.log("DÉCONNECTION");
       this.router.navigate(['/auth']);
     }
   }

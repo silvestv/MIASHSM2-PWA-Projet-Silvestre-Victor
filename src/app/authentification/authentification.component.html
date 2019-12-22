@@ -2,7 +2,15 @@
 <h2 class="h2 text-center">Authentification</h2>
 <hr>
 <br>
-<h3 class="h3 text-center">Veuillez-vous authentifier pour accèder à votre Todo</h3>
+<!--  <h3 class="h3 text-center">Veuillez-vous authentifier pour accèder à votre Todo</h3>
+<div class="form-group">
+  <label for="email">Adresse Email</label>
+  <input type="text" class="form-control" id="email" placeholder="Votre Email" formControlName="email"  [ngClass]="{ 'is-invalid': false}">
+</div>
+<div class="form-group">
+  <label for="password">PassWord</label>
+  <input type="text" class="form-control" id="password" formControlName="password"  placeholder="Votre password (6 caractère min)" [ngClass]="{ 'is-invalid': false}">
+</div>-->
 <button class="btn btn-success" *ngIf="!authStatus" (click)="onSignIn() ">Se Connecter</button>
 <button class="btn btn-danger" *ngIf="authStatus" (click)="onSignOut()">Se Déconnecter</button>
 <br><br>
