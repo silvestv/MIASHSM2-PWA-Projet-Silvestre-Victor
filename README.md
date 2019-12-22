@@ -33,6 +33,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - Run `git clone https://github.com/silvestv/MIASHSM2-PWA-Projet-Silvestre-Victor.git`.
 - Se placer dans le répertoire fraîchement créé.
 - Run `npm install --save` afin d'installer et de déclarer toutes les dépendances du projet
+- Patienter bien surtout à `> node-gyp rebuild > build_log.txt 2>&1 || exit 0`(c'est un peu long)
 - Run `ng serve --open` 
 - Naviguer
 
