@@ -1,5 +1,6 @@
 <div class="row">
-  <label class="text-center"><p>Vous êtes sur la page depuis {{secondes}} secondes </p></label>
+  <span class="text-center"><p>{{welcomeUser}}</p></span><br><br>
+  <span class="text-center"><p>Vous êtes sur la page depuis {{secondes}} secondes </p></span>
 </div>
 <section class="todoapp">
   <header class="header container-fluid">
@@ -48,7 +49,9 @@
   </footer>
 </section>
 <hr/>
-
+<div class="row">
+  <a routerLink="/users" >La liste des utilisateurs >>> </a>
+</div>
 <div class="container-fluid">
   <button class="btn btn-dark btn-lg btn-group" (click)="onUndo()"><i class="fas fa-undo"></i></button>
   <button class="btn btn-secondary btn-lg btn-group" (click)="onRedo()"><i class="fas fa-redo"></i></button>
@@ -57,9 +60,7 @@
   <button class="btn btn-danger btn-lg btn-group" (click)="deconnexion()">Déconnexion</button>
 </div>
 
-<div class="row">
-  <a routerLink="/users" >La liste des utilisateur</a>
-</div>
+
 
 
 <!-- Version debug de la liste V1

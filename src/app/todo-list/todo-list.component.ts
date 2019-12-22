@@ -20,6 +20,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
   @Input() private data: TodoListData;
   counterSubscription: Subscription;
   secondes: number;
+  welcomeUser: string;
 
   @ViewChild('newTodoInput', {static: false}) newTodoInput: ElementRef;
 
@@ -44,6 +45,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
         console.log('Observable complétée');
       }
     );
+    this.welcomeUser = this.authService.getUserAuthDisplay();
   }
 
   get label(): string {

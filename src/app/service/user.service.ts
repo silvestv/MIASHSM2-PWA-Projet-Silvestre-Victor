@@ -29,4 +29,13 @@ export class UserService {
       return JSON.parse(localStorage.getItem('listUtilisateur'));
     }
   }
+
+  containUser(email: string, password: string): User{
+    for(const user of this.users){
+      if(user.email === email && user.password === password){
+        return user;
+      }
+    }
+    console.log("aucun utilisateur de cet email/password existe");
+  }
 }
