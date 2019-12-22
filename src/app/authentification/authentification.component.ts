@@ -32,7 +32,7 @@ export class AuthentificationComponent implements OnInit {
     });
   }
 
-
+  //Validators of reactiveForm
   onSubmitForm(){
     const formValue = this.authForm.value;
     const currentEmail = formValue['email'];
@@ -66,7 +66,7 @@ export class AuthentificationComponent implements OnInit {
     return this.authForm.controls;
   }
 
-
+//on vérifie si les champ email et mdp correspond a un utilisateur enregistré dans le service
   checkRigthEmailAndPassword(email: string, password: string) : boolean{
     if(this.userService.containUser(email, password)){
       //on indique au service Authentification l'utilisateur associé à email et password !

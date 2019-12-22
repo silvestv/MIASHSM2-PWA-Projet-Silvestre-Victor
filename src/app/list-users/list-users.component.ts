@@ -15,6 +15,8 @@ export class ListUsersComponent implements OnInit {
   userSubscription: Subscription;
   constructor(private userService: UserService, private router: Router) { }
 
+  //afin de pouvoir afficher la liste des utilisateurs nous avons besoin de souscrire au utilisateur service
+  // et faire emettre ce dernier en cas de changement
   ngOnInit() {
     this.userSubscription = this.userService.userSubject.subscribe(
       (users: User[]) => {

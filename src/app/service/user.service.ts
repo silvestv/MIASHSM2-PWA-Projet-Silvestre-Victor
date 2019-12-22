@@ -1,7 +1,7 @@
 import {User} from '../models/user.model';
 import {Subject} from 'rxjs';
 
-
+//user service avec local storage
 export class UserService {
   private users: User[] = this.loadUser();
   userSubject = new Subject<User[]>();
@@ -30,6 +30,7 @@ export class UserService {
     }
   }
 
+  //on vérifie à la connection si l'utilisateur existe, si oui alors on le renvoit
   containUser(email: string, password: string): User{
     for(const user of this.users){
       if(user.email === email && user.password === password){

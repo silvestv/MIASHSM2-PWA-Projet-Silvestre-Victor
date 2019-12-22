@@ -1,3 +1,5 @@
+// ceci est le serve d'authentification il permet au service Guard d'autoriser la connexion ou non
+
 export class AuthentificationService{
   isAuth: boolean = false;
   nameAuth: string;
@@ -21,7 +23,8 @@ export class AuthentificationService{
     this.isAuth = false;
     console.log(this.isAuth);
   }
-
+  //la page de connexion va setter ces attribut si l'utilisateur est un utilisateur authentifier
+  // afin de pouvoir lui afficher un message de bienvenue dans la page todolist
   setUserAuthDisplay(nameAuth: string, lastnameAuth: string) {
     this.nameAuth = nameAuth;
     this.lastnameAuth = lastnameAuth;
